@@ -90,7 +90,7 @@ e.g. Can do a JOI Validation where if `interestPaid` = `ANNUALLY` then the inter
 - There is no unit testing for the routes. Would help with code coverage and ascertain routes call out to specific functions correctly
 - Response returns a very precise number when it could just return up to 2 DP or a rounded whole number for the client for simplicity (depending on the use case but for front end on the Bendigo website, it'd make more sense)
 - To make it further extensible, a controller + service class could be created to delegate certain action items to specific services
-- A reputable package could be used to handle calculations instead of using the native JS library
+- A reputable package such as Decimal.js could be used to handle calculations instead of using the native JS library
 
 ## Reasons for Certain Decision Making / Assumptions
 - RESTFul API is used instead of a CLI as suggested in the spec, as this is the framework I am familiar with and is easier to extend 
