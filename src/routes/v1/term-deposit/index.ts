@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { CalculateInterestRateValidationRequestSchema } from "../../../types/interest";
-import { calculateFinalInterestRate } from "../../../utlities/interest";
+import { calculateTermDeposit } from "../../../utlities/interest";
 
 export const router = Router();
 
@@ -12,7 +12,7 @@ router.post("/calculate", async (req, res, next) => {
   }
 
   try {
-    const result = calculateFinalInterestRate(value);
+    const result = calculateTermDeposit(value);
   
     if (result === -1) {
       return res.status(400).json({ error: "Annual Interest Paid was chosen, but the investment term is less than a month"})

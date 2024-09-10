@@ -1,6 +1,6 @@
 import { CalculateInterestRateValidationRequest, InterestPaid } from "../types/interest";
 
-const compoundedRateYearly = (interestPaid: InterestPaid): number => {
+const getCompoundedRateYearly = (interestPaid: InterestPaid): number => {
   switch (interestPaid) {
     case(InterestPaid.MONTHLY):
       return 12;
@@ -15,14 +15,19 @@ const compoundedRateYearly = (interestPaid: InterestPaid): number => {
 
 const convertInterestRateToDecimal = (interestRateRaw: number) => interestRateRaw / 100;
 
-const calculateFinalInterestRateForMaturity = ({ depositAmount, interestRate, investmentTerm }: CalculateInterestRateValidationRequest) => depositAmount * (1 + convertInterestRateToDecimal(interestRate) * (investmentTerm / 12));
+const calculateTermDepositForMaturity = ({ depositAmount, interestRate, investmentTerm }: CalculateInterestRateValidationRequest) => depositAmount * (1 + convertInterestRateToDecimal(interestRate) * (investmentTerm / 12));
 
-export const calculateFinalInterestRate = (req: CalculateInterestRateValidationRequest) => {
+/**
+ * 
+ * @param req The object containing all term deposit properties
+ * @returns The overall final balance
+ */
+export const calculateTermDeposit = (req: CalculateInterestRateValidationRequest) => {
   // https://cleartax.in/s/compound-interest-calculator
   // A = P (1 + R/N) ^ nt
 
   if (req.interestPaid === InterestPaid.MATURITY) {
-    return calculateFinalInterestRateForMaturity(req);
+    return calculateTermDepositForMaturity(req);
   }
 
   if (req.interestPaid === InterestPaid.ANNUALLY && req.investmentTerm < 12) {
@@ -31,7 +36,7 @@ export const calculateFinalInterestRate = (req: CalculateInterestRateValidationR
 
   const { depositAmount, interestRate, investmentTerm, interestPaid } = req;
   
-  const compoundedRate = compoundedRateYearly(interestPaid);
+  const compoundedRate = getCompoundedRateYearly(interestPaid);
   const convertedInterestRate = convertInterestRateToDecimal(interestRate);
 
   const years = investmentTerm / 12;

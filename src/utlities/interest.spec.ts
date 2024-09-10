@@ -3,7 +3,7 @@
  */
 
 import { CalculateInterestRateValidationRequest, InterestPaid } from "../types/interest";
-import { calculateFinalInterestRate } from "./interest";
+import { calculateTermDeposit } from "./interest";
 
 const DEFAULT_DEPOSIT_AMOUNT = 1_500_000;
 const DEFAULT_INTEREST_RATE = 1;
@@ -21,7 +21,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 3
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_503_753);
     });
@@ -34,7 +34,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 12
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_515_069);
     });
@@ -47,7 +47,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 15
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_518_860);
     });
@@ -60,7 +60,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_507_517);
     });
@@ -73,7 +73,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_515_069);
     });
@@ -86,7 +86,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_522_655);
     });
@@ -103,7 +103,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 3
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_503_750);
     });
@@ -116,7 +116,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 12
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_515_056);
     });
@@ -129,7 +129,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 15
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_518_844);
     });
@@ -142,7 +142,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_507_514);
     });
@@ -155,7 +155,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_515_056);
     });
@@ -168,7 +168,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_522_627);
     });
@@ -185,7 +185,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 3
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(-1);
     });
@@ -198,7 +198,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 12
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_515_000);
     });
@@ -211,7 +211,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 15
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_518_773);
     });
@@ -224,7 +224,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_507_500);
     });
@@ -237,7 +237,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_515_000);
     });
@@ -250,7 +250,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_522_500);
     });
@@ -267,7 +267,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 3
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_503_750);
     });
@@ -280,7 +280,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 12
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_515_000);
     });
@@ -293,7 +293,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: 15
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_518_750);
     });
@@ -306,7 +306,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_507_500);
     });
@@ -319,7 +319,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_515_000);
     });
@@ -332,7 +332,7 @@ describe("calculateFinalInterestRate", () => {
         investmentTerm: DEFAULT_INVESTMENT_TERM
       }
 
-      const res = calculateFinalInterestRate(req);
+      const res = calculateTermDeposit(req);
 
       expect(Math.round(res)).toBe(1_522_500);
     });
