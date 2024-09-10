@@ -92,6 +92,7 @@ e.g. can do a JOI Validation where if `interestPaid` = `ANNUALLY` then the `inte
 - Response returns a very precise number when it could just return up to 2 DP or a rounded whole number for the client for simplicity (depending on the use case but for front end on the Bendigo website, it'd make more sense)
 - To make it further extensible, a controller + service class could be created to delegate certain action items to specific services
 - A reputable package such as Decimal.js could be used to handle calculations instead of using the native math JS library
+- Do the cent to dollar conversion response in the `calculateTermDeposit` function
 
 ## Reasons for Certain Decision Making / Assumptions
 - RESTFul API is used instead of a CLI as suggested in the spec, as this is the framework I am more familiar with and is easier to extend 

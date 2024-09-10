@@ -30,6 +30,7 @@ export const calculateTermDeposit = (req: CalculateInterestRateValidationRequest
     return calculateTermDepositForMaturity(req);
   }
 
+  // Throw an error as this is a validation error
   if (req.interestPaid === InterestPaid.ANNUALLY && req.investmentTerm < 12) {
     return -1;
   }
@@ -38,7 +39,6 @@ export const calculateTermDeposit = (req: CalculateInterestRateValidationRequest
   
   const compoundedRate = getCompoundedRateYearly(interestPaid);
   const convertedInterestRate = convertInterestRateToDecimal(interestRate);
-
   const years = investmentTerm / 12;
   
   const base = (1 + (convertedInterestRate / compoundedRate))

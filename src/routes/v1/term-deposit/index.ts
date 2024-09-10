@@ -17,8 +17,9 @@ router.post("/calculate", async (req, res, next) => {
     if (result === -1) {
       return res.status(400).json({ error: "Annual Interest Paid was chosen, but the investment term is less than a month"})
     }
-  
-    return res.status(200).json({ finalBalance: result });
+    
+    // Convert the result into dollar amount as it is currently represented in cents 
+    return res.status(200).json({ finalBalance: result / 100 });
   } catch (err) {
     return res.status(500).send("An Internal Server Error Has Occurred!");
   }
